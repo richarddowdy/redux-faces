@@ -1,4 +1,10 @@
-const INITIAL_STATE = { face: "⊂((・⊥・))⊃", background: "grey"};
+const INITIAL_STATE = { face: "⊂((・⊥・))⊃", background: "dodgerblue"};
+
+const randomFaces = ["ᵔᴥᵔ", "⚈ ̫ ⚈", "(☞◑ω◑)☞", "(^_^)v", "（◞‸◟）"];
+
+function randomNum() {
+  return Math.floor(Math.random() * randomFaces.length);
+};
 
 function rootReducer (state=INITIAL_STATE, action){
   console.log(action.type);
@@ -15,6 +21,9 @@ function rootReducer (state=INITIAL_STATE, action){
     case "confused":
       return { ...state, face: "(⊙_☉)", background: "green"};
 
+    case "random":
+      return {...state, face: randomFaces[randomNum()], background: "purple" }
+
     default :
       return state;
   }
@@ -23,5 +32,3 @@ function rootReducer (state=INITIAL_STATE, action){
 
 
 const store = Redux.createStore(rootReducer);
-
-// module.exports = store;
