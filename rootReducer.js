@@ -2,12 +2,11 @@ const INITIAL_STATE = { face: "⊂((・⊥・))⊃", background: "dodgerblue"};
 
 const randomFaces = ["ᵔᴥᵔ", "⚈ ̫ ⚈", "(☞◑ω◑)☞", "(^_^)v", "（◞‸◟）"];
 
-function randomNum() {
+function randomIdx() {
   return Math.floor(Math.random() * randomFaces.length);
 };
 
 function rootReducer (state=INITIAL_STATE, action){
-  console.log(action.type);
   switch(action.type){
     case "happy":
       return { ...state, face: "(＾ω＾)", background: "yellow"};
@@ -22,7 +21,7 @@ function rootReducer (state=INITIAL_STATE, action){
       return { ...state, face: "(⊙_☉)", background: "green"};
 
     case "random":
-      return {...state, face: randomFaces[randomNum()], background: "purple" }
+      return {...state, face: randomFaces[randomIdx()], background: "purple" }
 
     default :
       return state;

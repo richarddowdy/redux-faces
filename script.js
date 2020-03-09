@@ -6,16 +6,14 @@ window.onload = function () {
   const confusedButton = document.getElementById("confused");
   const randomButton = document.getElementById("random");
 
-  const initialFace = store.getState().face;
-  const initialColor = store.getState().background;
-  faceElement.innerHTML = initialFace;
-  document.body.style.backgroundColor = initialColor
+  const { face, background } = store.getState();
+  faceElement.innerHTML = face;
+  document.body.style.backgroundColor = background;
 
   function handleChange(faceElement){
-    const currentFace = store.getState().face;
-    const color = store.getState().background;
-    faceElement.innerHTML = currentFace;
-    document.body.style.backgroundColor = color;
+    const { face, background } = store.getState();
+    faceElement.innerHTML = face;
+    document.body.style.backgroundColor = background;
   }
   store.subscribe( () => handleChange(faceElement) );
   
